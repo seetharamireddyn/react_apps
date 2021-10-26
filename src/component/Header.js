@@ -6,10 +6,12 @@ class Header extends Component {
         return(
             <Fragment>
                 <header>
-                    <div className="logo">React App</div>
+                    <div className="logo">NS Cart</div>
                     <center>
                         <input/>
-                        <div style={{color:'white'}}>User Text Here</div>
+                        <div style={{marginTop: '5px'}}>
+                        <button type="button" class="btn btn-dark">Search</button>
+                        </div>
                     </center>
                 </header>
             </Fragment>
