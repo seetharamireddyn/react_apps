@@ -5,7 +5,7 @@ const Footer = () => {
         <Fragment>
             <hr/>
             <center>
-                <h3>&copy; Developer Funnel</h3>
+                <h3>&copy; Ns Cart</h3>
             </center>
         </Fragment>
     )

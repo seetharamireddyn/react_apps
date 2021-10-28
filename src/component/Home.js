@@ -7,17 +7,27 @@ import ProductData from './db.json';
 class Home extends Component {
     constructor(){
         super()
-        this.state = {
-            products: ProductData
+
+        this.state={
+            products:ProductData,
+            filtered:ProductData
         }
     }
+
+    filterProduct=(keyword)=>{
+        var output = this.state.products.filter((item) => {
+            return item.name.toLowerCase().indexOf(keyword.toLowerCase())>-1
+        })
+        this.setState({filtered:output})
+    }
+
     render(){
         return(
             <Fragment>
-                <Header/>
+                <Header userText={(data) => {this.filterProduct(data)}}/>
                 <br/>
-                <ProductDisplay productData={this.state.products}/>
-                <Footer/>
+                <ProductDisplay prodData={this.state.filtered}/>
+                <Footer year="2021" month="Oct"/>
             </Fragment>
         )
     }
