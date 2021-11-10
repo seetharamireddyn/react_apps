@@ -29,10 +29,7 @@ const Header = (props) => {
                     </div>
                     <div class="collapse navbar-collapse" id="myNavbar">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="#">Home</a></li>
-                            <li><a href="https://github.com/">Page 1</a></li>
-                            <li><a href="https://google.com/">Page 2</a></li>
-                            <li><a href="https://facebook.com/">Page 3</a></li>
+                            <li><Link to="/">Home</Link></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>

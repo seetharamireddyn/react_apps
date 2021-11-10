@@ -9,7 +9,7 @@ const Routing = () => {
         <BrowserRouter>
             <Header/>
             <Routes>
-                <Route exact path="/" component={Home}/> 
+                <Route exact path="/" element={<Home/>}/> 
             </Routes>
             <Footer/>
         </BrowserRouter>
