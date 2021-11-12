@@ -43,11 +43,10 @@ class Search extends Component {
     }
 
     render(){
-        console.log(">>>>",this.state.location)
         return(
             <div id="search">
                 <div id="logo">
-                    <span>NS!</span>
+                    <span>SJS!</span>
                 </div>
                 <div id="heading">
                     Find The Restaurant
