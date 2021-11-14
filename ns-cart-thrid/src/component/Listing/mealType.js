@@ -4,7 +4,7 @@ import './listing.css';
 
 const MealType = (props) => {
 
-    const restDetail = ({ restData }) => {
+    const restDetail = ({ restData, mealId }) => {
         if (restData) {
             if (restData.length > 0) {
                 return restData.map((rest) => {
@@ -20,22 +20,25 @@ const MealType = (props) => {
                                         <div className="city_name">{rest.address}</div>
                                         <div className="city_name">{rest.rating_text}</div>
                                         <div className="city_name">Rs. {rest.cost}</div>
-                                        <div className="labelDiv">
-                                            <span className="label label-primary">
-                                                {rest.mealTypes[0].mealtype_name}
-                                                {mealNames.bind(rest.mealTypes)}
-                                            </span> &nbsp;
-                                            <span className="label label-success">
-                                                {rest.mealTypes[1].mealtype_name}
-                                            </span>
+                                        <div className="labelDiv" >
+                                            {rest.mealTypes.map(function (mealType) {
+                                                return (
+                                                    <span className={mealId === mealType.mealtype_id ? "label label-success" : "label label-primary"}
+                                                        key={mealType.mealtype_id}>
+                                                        {mealType.mealtype_name}
+                                                    </span>
+                                                )
+                                            })}
                                         </div>
                                         <div className="labelDiv">
-                                            <span className="label label-danger">
-                                                {rest.cuisines[0].cuisine_name}
-                                            </span> &nbsp;
-                                            <span className="label label-info">
-                                                {rest.cuisines[1].cuisine_name}
-                                            </span>
+                                            {rest.cuisines.map(function (cuisine, index) {
+                                                return (
+                                                    <span className={index === 1 ? "label label-danger" : "label label-info"}
+                                                        key={cuisine.cuisine_id}>
+                                                        {cuisine.cuisine_name}
+                                                    </span>
+                                                )
+                                            })}
                                         </div>
                                     </div>
                                 </div>
@@ -53,25 +56,12 @@ const MealType = (props) => {
         }
     }
 
-    function mealNames(data) {
-        console.log(data);
-        if(data){
-            return data.map((item) => {
-                console.log(item);
-                return (
-                   {item}
-                )
-            })
-        }
-    }
-
-
     return (
         <div id="content">
             {restDetail(props)}
         </div>
     )
-    
+
 }
 
 export default MealType;

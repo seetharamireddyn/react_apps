@@ -13,6 +13,8 @@ class ListingApi extends Component {
 
         this.state = {
             restList: [],
+            mealId:  this.props.params.id
+
         }
     }
 
@@ -26,16 +28,14 @@ class ListingApi extends Component {
                             <h1>Filter</h1>
                         </center>
                     </div>
-                    <MealType restData={this.state.restList}/>
+                    <MealType restData={this.state.restList} mealId = {this.state.mealId}/>
                 </div>
             </div>
         )
     }
 
     componentDidMount() {
-        const { id } = this.props.params;
-
-        axios.get(`${mealTypeUrl}${id}`)
+        axios.get(`${mealTypeUrl}${this.state.mealId}`)
         .then((res) => this.setState({restList:res.data}));
     }
 }
