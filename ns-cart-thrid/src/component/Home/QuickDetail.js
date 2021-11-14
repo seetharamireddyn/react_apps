@@ -8,7 +8,7 @@ const QuickDetail = (props) => {
         if(quickData){
             return quickData.map((item) => {
                 return(
-                    <Link to={`/mealtype_id/${item.mealtype_id}`} key={item.mealtype_id}>
+                    <Link to={`/mealid/${item.mealtype_id}`} key={item.mealtype_id}>
                         <div className="tileContainer">
                             <div className="tileComponent1">
                                 <img src={item.meal_image} alt=""/>

@@ -4,6 +4,7 @@ import Header from './Header';
 import Footer from './Footer';
 import Home from './component/Home/Home';
 import Listing from './component/Listing/listingApi';
+import RestDetails from './component/details/restDetails'
 
 const Routing = () => {
     return(
@@ -11,7 +12,8 @@ const Routing = () => {
             <Header/>
             <Routes>
                 <Route path="/" element={<Home/>}/> 
-                <Route path="/mealtype_id/:id" element={<Listing/>}/>
+                <Route path="/mealid/:id" element={<Listing/>}/>
+                <Route path="/details/:restid" element={<RestDetails />}/> 
             </Routes>
             <Footer/>
         </BrowserRouter>

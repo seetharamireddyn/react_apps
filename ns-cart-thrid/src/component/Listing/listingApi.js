@@ -1,29 +1,48 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import MealTypeDetail from './MealTypeDetail';
+import MealType from './mealType';
+import './listing.css';
 
-const mealTypeUrl = "https://zomatoajulypi.herokuapp.com/restaurant?mealtype_id"
+const mealTypeUrl = "https://zomatoajulypi.herokuapp.com/restaurant?mealtype_id="
 
 class ListingApi extends Component {
 
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            restList: [],
+        }
+    }
+
     render() {
+        
         return (
-            <div>
-                <MealTypeDetail/>
+            <div className="row">
+                <div id="mainListing">
+                    <div id="filter">
+                        <center>
+                            <h1>Filter</h1>
+                        </center>
+                    </div>
+                    <MealType restData={this.state.restList}/>
+                </div>
             </div>
         )
     }
 
     componentDidMount() {
+        const { id } = this.props.params;
 
-        //console.log(mealtype_id);
-        
-        // axios.get(`${mealTypeUrl}/${mealTypeId}`)
-        // .then((res) => this.setState({restList:res.data}))
-
+        axios.get(`${mealTypeUrl}${id}`)
+        .then((res) => this.setState({restList:res.data}));
     }
-
-    
 }
 
-export default ListingApi;
+export default (props) => (
+    <ListingApi
+        {...props}
+        params={useParams()}
+    />
+);
