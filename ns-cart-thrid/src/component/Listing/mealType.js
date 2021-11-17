@@ -22,8 +22,10 @@ const MealType = (props) => {
                                         <div className="city_name">Rs. {rest.cost}</div>
                                         <div className="labelDiv" >
                                             {rest.mealTypes.map(function (mealType) {
+                                                console.log(typeof(mealType.mealtype_id));
+                                                console.log(typeof(mealId));
                                                 return (
-                                                    <span className={mealId === mealType.mealtype_id ? "label label-success" : "label label-primary"}
+                                                    <span className={ mealType.mealtype_id === Number(mealId) ? "label label-success" : "label label-primary"}
                                                         key={mealType.mealtype_id}>
                                                         {mealType.mealtype_name}
                                                     </span>
