@@ -46,7 +46,7 @@ class Search extends Component {
         return(
             <div id="search">
                 <div id="logo">
-                    <span>SJS!</span>
+                    <span>JS!</span>
                 </div>
                 <div id="heading">
                     Find The Restaurant

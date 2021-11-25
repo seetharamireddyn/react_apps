@@ -1,5 +1,6 @@
 body{
-    margin:auto
+    margin:auto;
+    background-color:bisque;
 }
 
 #main{
@@ -17,7 +18,7 @@ body{
 }
 
 #logo{
-    font-size:30px;
+    font-size:40px;
     color:red;
     text-align: center;
     background-color:white;
@@ -30,8 +31,8 @@ body{
 #logo > span {
     font-weight: bold;
     position: absolute;
-    margin-left: -34px;
-    margin-top: 28px;
+    margin-left: -31px;
+    margin-top: 23px;
 }
 
 #heading{

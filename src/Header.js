@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Header = (props) => {
     return (
-        <>
+        <div>
             <nav className="navbar navbar-inverse">
                 <div className="container-fluid">
                     <div className="navbar-header">
@@ -16,12 +16,12 @@ const Header = (props) => {
                             <svg width="120">
                                 <defs>
                                     <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-                                    <stop offset="0%" style={{stopColor: "rgba(0,255,0)", stopOpacity: "1"}} />
-                                    <stop offset="100%" style={{stopColor: "rgba(255,0,0)", stopOpacity: "1"}} />
+                                        <stop offset="0%" style={{ stopColor: "rgba(0,255,0)", stopOpacity: "1" }} />
+                                        <stop offset="100%" style={{ stopColor: "rgba(255,0,0)", stopOpacity: "1" }} />
                                     </linearGradient>
                                 </defs>
                                 <ellipse cx="50" cy="15" rx="50" ry="20" fill="url(#grad1)" />
-                                <text fill="#FFFFFF" fontSize="15" fontFamily="Verdana" x="8" y="20">Nutri Store</text>
+                                <text fill="#FFFFFF" fontSize="15" fontFamily="Verdana" x="8" y="20">Junk Store</text>
                                 Sorry, your browser does not support inline SVG.
                             </svg>
                         </a>
@@ -39,7 +39,7 @@ const Header = (props) => {
                 </div>
             </nav>
             <hr />
-        </>
+        </div>
     )
 }
 

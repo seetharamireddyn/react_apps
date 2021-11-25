@@ -22,8 +22,6 @@ const MealType = (props) => {
                                         <div className="city_name">Rs. {rest.cost}</div>
                                         <div className="labelDiv" >
                                             {rest.mealTypes.map(function (mealType) {
-                                                console.log(typeof(mealType.mealtype_id));
-                                                console.log(typeof(mealId));
                                                 return (
                                                     <span className={ mealType.mealtype_id === Number(mealId) ? "label label-success" : "label label-primary"}
                                                         key={mealType.mealtype_id}>
@@ -49,11 +47,13 @@ const MealType = (props) => {
                     )
                 })
             }
+            else{
+                <div className="item">No Data</div>
+            }
         }
         else {
-            <div>
+            <div className="item"> 
                 <img src="/images/loader.gif" alt="loader" />
-                <h3>Loading....</h3>
             </div>
         }
     }

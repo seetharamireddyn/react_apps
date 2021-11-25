@@ -1,24 +1,14 @@
 import React,{Component} from 'react';
-
-class MenuDetails extends Component{
-
-   constructor(props){
-       super(props);
-       this.state = {
-        itemCount:0,
-       }
-   }
+class MenuDetail extends Component{
     orderId = [];
 
     addItem = (id) => {
         this.orderId.push(id)
-        this.setState({itemCount: this.state.itemCount += 1})
         this.props.finalOrder(this.orderId)
     }
 
     removeOrder = (id) => {
         this.orderId.splice(this.orderId.indexOf(id),1)
-        this.setState({itemCount: this.state.itemCount -= 1})
         this.props.finalOrder(this.orderId)
     }
 
@@ -32,20 +22,21 @@ class MenuDetails extends Component{
         }
     }
     renderMenu = ({menuData}) => {
+        console.log(menuData)
         if(menuData){
+            console.log(menuData)
             return menuData.map((item) =>{
                 return(
                     <div key={item.menu_id}>
                         <div className="col-md-7 items">
                             <b>{item.menu_id}</b> &nbsp;
-                            <img src={item.menu_image} style={{height:80,width:80}} alt={item.menu_name}/>
+                            <img src={item.menu_image} style={{height:80,width:80}}b alt=""/>
                             &nbsp;&nbsp; {item.menu_name} - Rs.{item.menu_price}
                         </div>
                         <div className="col-md-4">
                             <button className="btn btn-primary" onClick={() => {this.addItem(item.menu_id)}}>
                                 <span className="glyphicon glyphicon-plus"></span>
                             </button> &nbsp;
-                            <span>{this.state.itemCount}</span>&nbsp;
                             <button className="btn btn-danger" onClick={() => {this.removeOrder(item.menu_id)}}>
                                 <span className="glyphicon glyphicon-minus"></span>
                             </button>
@@ -70,4 +61,4 @@ class MenuDetails extends Component{
     }
 }
 
-export default MenuDetails;
+export default MenuDetail;

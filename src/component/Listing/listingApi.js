@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import MealType from './mealType';
 import './listing.css';
+import CuisineFilter from '../filters/cuisineFilter';
+import CostFilter from '../filters/costFilter';
 
 const mealTypeUrl = "https://zomatoajulypi.herokuapp.com/restaurant?mealtype_id="
 
@@ -18,6 +20,10 @@ class ListingApi extends Component {
         }
     }
 
+    setDataPerFilter = (data) => {
+        this.setState({restList:data})
+    }
+
     render() {
         
         return (
@@ -27,6 +33,11 @@ class ListingApi extends Component {
                         <center>
                             <h1>Filter</h1>
                         </center>
+                        <CuisineFilter 
+                            mealId={this.state.mealId}
+                            restPerCuisine={(data) => {this.setDataPerFilter(data)}}/>
+                        <CostFilter mealId={this.state.mealId}
+                            restPerCost={(data) => {this.setDataPerFilter(data)}}/>
                     </div>
                     <MealType restData={this.state.restList} mealId = {this.state.mealId}/>
                 </div>
