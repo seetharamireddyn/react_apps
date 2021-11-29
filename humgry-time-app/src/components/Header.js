@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
-const Header = (props) => {
+const Header = () =>{
     return (
         <>
             <nav className="navbar navbar-inverse">
@@ -16,12 +16,12 @@ const Header = (props) => {
                             <svg width="120">
                                 <defs>
                                     <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-                                    <stop offset="0%" style={{stopColor: "rgba(0,255,0)", stopOpacity: "1"}} />
-                                    <stop offset="100%" style={{stopColor: "rgba(255,0,0)", stopOpacity: "1"}} />
+                                    <stop offset="0%" style={{stopColor: "rgba(0,0,225)", stopOpacity: "1"}} />
+                                    <stop offset="100%" style={{stopColor: "rgba(0,225,0)", stopOpacity: "1"}} />
                                     </linearGradient>
                                 </defs>
-                                <ellipse cx="50" cy="15" rx="50" ry="20" fill="url(#grad1)" />
-                                <text fill="#FFFFFF" fontSize="15" fontFamily="Verdana" x="8" y="20">Nutri Store</text>
+                                <ellipse cx="60" cy="15" rx="60" ry="20" fill="url(#grad1)" />
+                                <text fill="#FFFFFF" fontSize="15" fontFamily="Verdana" x="8" y="20">Hungry Time</text>
                                 Sorry, your browser does not support inline SVG.
                             </svg>
                         </a>
