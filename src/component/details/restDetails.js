@@ -1,6 +1,6 @@
 //import React,{Component} from 'react';
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './details.css';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
@@ -8,7 +8,7 @@ import 'react-tabs/style/react-tabs.css';
 import MenuDetail from './menuDetails';
 
 const url = "https://zomatoajulypi.herokuapp.com/details";
-const menu = "https://zomatoajulypi.herokuapp.com/menu"
+const menu = "https://zomatoajulypi.herokuapp.com/menu";
 
 const RestaurentDetails = (props) => {
 
@@ -34,17 +34,17 @@ const RestaurentDetails = (props) => {
     }, [params.restid]);
 
     function proceed() {
-        sessionStorage.setItem('menu', userItem);
+        console.log("userItem..>> ", userItem);
+        sessionStorage.setItem('menu', JSON.stringify(userItem));
         navigate(`/placeOrder/${details.restaurant_name}`);
     }
 
     function addToCart(data) {
+        console.log("Add to cart .>>", data);
         setUserItem(data)
     }
 
-
     return (
-
         <>
             <div className="container">
                 <div className="panel panel-info">

@@ -1,34 +1,5 @@
 {
   "booking": [
-    {
-      "id": 8022,
-      "hotel_name": "Food Adda",
-      "name": "Sriram",
-      "phone": "702600980",
-      "email": "nsr@gmail.com",
-      "cost": 0,
-      "address": "#304A",
-      "details": ""
-    },
-    {
-      "id": 57314,
-      "hotel_name": "Food Adda",
-      "name": "Sriram",
-      "phone": "702600980",
-      "email": "nsr@gmail.com",
-      "cost": 259,
-      "address": "#304A",
-      "details": "12"
-    },
-    {
-      "id": 78802,
-      "hotel_name": "Cafe Wink",
-      "name": "Sriram",
-      "phone": "702600980",
-      "email": "nsr@gmail.com",
-      "cost": 335,
-      "address": "#304A",
-      "details": "56"
-    }
+    
   ]
 }

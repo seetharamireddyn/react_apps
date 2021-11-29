@@ -1,45 +1,47 @@
-import React from 'react';
+import React,{Component} from 'react';
+import axios from 'axios';
+import OrderDisplay from './viewOrderDisplay';
 
-const BookingDisplay = (props) => {
-    const renderTable = ({bookdata}) => {
-        if(bookdata){
-            return bookdata.map((item) => {
-                return(
-                    <tr>
-                        <td>{item.id}</td>
-                        <td>{item.hotel_name}</td>
-                        <td>{item.name}</td>
-                        <td>{item.phone}</td>
-                        <td>{item.email}</td>
-                        <td>Rs.{item.cost}</td>
-                    </tr>
-                )
-            })
+const url = "http://localhost:3214/booking";
+
+class ViewBooking extends Component {
+    constructor(){
+        super()
+
+        this.state={
+            booking:''
         }
     }
-    return(
-        <div className="container">
-            <center><h3>Orders List</h3></center>
-            <table className="table">
-                <thead>
-                    <tr>
-                        <th>OrderId</th>
-                        <th>Hotel</th>
-                        <th>Name</th>
-                        <th>Phone</th>
-                        <th>Email</th>
-                        <th>Cost</th>
-                        <th>Date</th>
-                        <th>Status</th>
-                        <th>BankName</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {renderTable(props)}
-                </tbody>
-            </table>
-        </div>
-    )
+    render(){
+        return(
+           <>
+            <OrderDisplay bookdata={this.state.booking}/>
+           </>
+        )
+    }
+
+    componentDidMount(){
+        if(this.props.location){
+            var qparams = this.props.location.search;
+            if(qparams){
+                var data = {
+                    "status":qparams.split('&')[0].split('=')[1],
+                    "date":qparams.split('&')[2].split('=')[1],
+                    "bank":qparams.split('&')[3].split('=')[1],
+                }
+                var id = qparams.split('&')[1].split('=')[1].split('_')[1];
+                fetch(`${url}/${id}`,{
+                    method:'PATCH',
+                    headers: {
+                        'Accept':'application/json',
+                        'Content-Type':'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+            }
+        }
+        axios.get(`${url}`).then((res) => {this.setState({booking:res.data})} )
+    }
 }
 
-export default BookingDisplay
+export default ViewBooking;

@@ -7,6 +7,7 @@ const postUrl = "http://localhost:3214/booking";
 
 
 class PlaceBooking extends Component {
+    orderId;
     constructor(props){
         super(props)
 
@@ -25,6 +26,7 @@ class PlaceBooking extends Component {
         this.setState({[event.target.name]:event.target.value})
     }
     renderItems = (data) => {
+        console.log(data)
         if(data){
             return data.map((item,index) => {
                 return(
@@ -118,20 +120,29 @@ class PlaceBooking extends Component {
         )
     }
 
-    componentDidMount(){
-        var menuItem = sessionStorage.getItem('menu')
-        var orderId = []
-        menuItem.split(',').map((item) => {
-            orderId.push(parseInt(item))
-            return 'ok'
+    getOrderIds = () => { 
+
+        let menuItems = JSON.parse(sessionStorage.getItem('menu'))
+        console.log("menuItems..>> ", menuItems);
+
+        return ((menuItems) =>  {
+            return menuItems.map((item) => {
+               return this.orderId.push(item);
+            })
         })
+
+    };
+    
+    componentDidMount(){
+        
+        this.getOrderIds();
         fetch(menuUrl,{
             method:'POST',
             headers:{
                 'accept': 'application/json',
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(orderId)
+            body: JSON.stringify(this.orderId)
         })
         .then((res) => res.json())
         .then((data) => {

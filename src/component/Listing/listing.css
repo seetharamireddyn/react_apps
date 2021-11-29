@@ -24,6 +24,7 @@
     width:20%;
     float: left;
     border: 5px solid gray;
+    background-color: silver;
 }
 #content{
     width:65%;

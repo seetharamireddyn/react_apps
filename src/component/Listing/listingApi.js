@@ -16,7 +16,6 @@ class ListingApi extends Component {
         this.state = {
             restList: [],
             mealId:  this.props.params.id
-
         }
     }
 

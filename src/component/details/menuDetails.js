@@ -1,43 +1,51 @@
-import React,{Component} from 'react';
-class MenuDetail extends Component{
-    orderId = [];
-
-    addItem = (id) => {
-        this.orderId.push(id)
-        this.props.finalOrder(this.orderId)
+import React, { Component } from 'react';
+class MenuDetail extends Component {
+    orders = [];
+    constructor(props) {
+        super();
+        this.state = {
+            count: 0,
+        }
     }
 
-    removeOrder = (id) => {
-        this.orderId.splice(this.orderId.indexOf(id),1)
-        this.props.finalOrder(this.orderId)
+    addItem = (item) => {
+        this.setState({ count: this.state.count+1})
+        this.orders.push(item);
+        this.props.finalOrder(item)
     }
 
-    renderCart = (orders) => { 
-        if(orders){
-            return orders.map((item) => {
-                return(
-                    <b>{item},&nbsp;&nbsp;</b>
+    removeOrder = (item) => {
+        this.setState({ count: this.state.count-1})
+
+       // this.orders.splice(this.orders(item), 1)
+        this.props.finalOrder(this.orders)
+    }
+
+    renderCart = (orders) => {
+        if (orders) {
+            return orders.map((item, index) => {
+                return (
+                    <b key={index}>{item},&nbsp;&nbsp;</b>
                 )
             })
         }
     }
-    renderMenu = ({menuData}) => {
-        console.log(menuData)
-        if(menuData){
-            console.log(menuData)
-            return menuData.map((item) =>{
-                return(
+    renderMenu = ({ menuData }) => {
+        if (menuData) {
+            return menuData.map((item) => {
+                return (
                     <div key={item.menu_id}>
                         <div className="col-md-7 items">
                             <b>{item.menu_id}</b> &nbsp;
-                            <img src={item.menu_image} style={{height:80,width:80}}b alt=""/>
+                            <img src={item.menu_image} style={{ height: 80, width: 80 }} b alt="" />
                             &nbsp;&nbsp; {item.menu_name} - Rs.{item.menu_price}
                         </div>
                         <div className="col-md-4">
-                            <button className="btn btn-primary" onClick={() => {this.addItem(item.menu_id)}}>
+                            <button className="btn btn-primary" onClick={() => { this.addItem(item) }}>
                                 <span className="glyphicon glyphicon-plus"></span>
                             </button> &nbsp;
-                            <button className="btn btn-danger" onClick={() => {this.removeOrder(item.menu_id)}}>
+                            <span>{this.state.count}</span>&nbsp;
+                            <button className="btn btn-danger" onClick={() => { this.removeOrder(item) }}>
                                 <span className="glyphicon glyphicon-minus"></span>
                             </button>
                         </div>
@@ -46,12 +54,14 @@ class MenuDetail extends Component{
             })
         }
     }
-    render(){
-        return(
+    render() {
+        return (
             <div>
                 <div className="col-md-12 bg-success">
                     <h1>Item Added</h1>
-                    Item Number {this.renderCart(this.orderId)} Added
+                    Item Number {this.renderCart(this.orders.map((order) => {
+                        return <span>{order.menu_id}</span>
+                    }))} Added
                 </div>
                 <div className="col-md-12 bg-info">
                     {this.renderMenu(this.props)}

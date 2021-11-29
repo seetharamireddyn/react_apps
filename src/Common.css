@@ -1,0 +1,11 @@
+#footer {
+    background-color: #101010;
+    color: white;
+}
+
+#header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
